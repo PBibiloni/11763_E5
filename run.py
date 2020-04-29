@@ -10,6 +10,10 @@ import matplotlib.pyplot as plt
 
 
 def main():
+
+    # 1. Canny edge detector
+    ###
+
     data = image_data()[0]
     img = data['img_grayscale']
 
@@ -40,8 +44,6 @@ def main():
 
     # 2. Filter bank
     ###
-
-
     data = image_data()[0]
     img = data['img_grayscale']
 
@@ -49,19 +51,7 @@ def main():
     kernels = create_filter_bank()
     kernel_selection = random.sample(kernels, k=6)
 
-    fig, axs = plt.subplots(2, 3)
-    axs = [a for ax in axs for a in ax]
-    fig.suptitle('Watershed on Canny edge detector')
-    [ax.imshow(k) for k, ax in zip(kernel_selection, axs)]
-    fig.show()
-
     # Apply them to a 1-channel image:
-    fig, axs = plt.subplots(2, 4)
-    axs = [a for ax in axs for a in ax]
-    fig.suptitle('Watershed on Canny edge detector')
-    axs[0].imshow(img)
-    [ax.imshow(apply_filter(img, k)) for k, ax in zip(kernel_selection, axs[1:4] + axs[5:])]
-    fig.show()
 
 
 def create_filter_bank():
