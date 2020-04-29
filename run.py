@@ -10,37 +10,25 @@ import matplotlib.pyplot as plt
 
 
 def main():
+
+    # 1. Canny edge detector
+    ###
+
     data = image_data()[0]
     img = data['img_grayscale']
 
     # Extract contours from images
     edges = []
     for s in [1, 5, 10, 20]:
-        edges.append(canny(img, sigma=s))
-
-    fig, axs = plt.subplots(2, 3)
-    fig.suptitle('Canny edge detector')
-    axs[0][0].imshow(img)
-    axs[0][1].imshow(edges[0])
-    axs[0][2].imshow(edges[1])
-    axs[1][1].imshow(edges[2])
-    axs[1][2].imshow(edges[3])
-    fig.show()
+        pass
 
     # Repeat the same for all images:
     for data in image_data():
         img = data['img_grayscale']
-        edgs = canny(img, sigma=15)
-
-        fig, (ax1, ax2) = plt.subplots(1, 2)
-        fig.suptitle('Watershed on Canny edge detector')
-        ax1.imshow(img)
-        ax2.imshow(edgs)
-        fig.show()
+        pass
 
     # 2. Filter bank
     ###
-
 
     data = image_data()[0]
     img = data['img_grayscale']
@@ -49,19 +37,10 @@ def main():
     kernels = create_filter_bank()
     kernel_selection = random.sample(kernels, k=6)
 
-    fig, axs = plt.subplots(2, 3)
-    axs = [a for ax in axs for a in ax]
-    fig.suptitle('Watershed on Canny edge detector')
-    [ax.imshow(k) for k, ax in zip(kernel_selection, axs)]
-    fig.show()
+    pass
 
     # Apply them to a 1-channel image:
-    fig, axs = plt.subplots(2, 4)
-    axs = [a for ax in axs for a in ax]
-    fig.suptitle('Watershed on Canny edge detector')
-    axs[0].imshow(img)
-    [ax.imshow(apply_filter(img, k)) for k, ax in zip(kernel_selection, axs[1:4] + axs[5:])]
-    fig.show()
+    pass
 
 
 def create_filter_bank():
